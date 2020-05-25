@@ -15,6 +15,7 @@
   --color-background: #f8f8f8;
   --color-shadow: #000000;
   --color-circle: #ffffff;
+  --color-text: #282b30;
 }
 
 .theme-dark {
@@ -23,6 +24,7 @@
   --color-secondary: #171a1f;
   --color-background: #282b30;
   --color-shadow: none;
+  --color-text: #ffffff;
 }
 
 :root {
@@ -96,6 +98,7 @@ body {
   font-size: var(--font-size);
   font-family: var(--font-family);
   background-color: var(--color-background);
+  color: var(--color-text);
 }
 
 // SECTIONS
