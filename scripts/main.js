@@ -11,7 +11,8 @@ const setTheme = (themeName) => {
   document.documentElement.className = themeName;
 };
 
-const toggleTheme = () => {
+const toggleTheme = (event) => {
+  event.preventDefault();
   if (localStorage.getItem("theme") === "theme-dark") {
     setTheme("theme-light");
   } else {

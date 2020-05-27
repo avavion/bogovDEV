@@ -14,7 +14,6 @@
   --color-secondary: #ffffff;
   --color-background: #f8f8f8;
   --color-shadow: #000000;
-  --color-circle: #ffffff;
   --color-text: #282b30;
 }
 
@@ -33,6 +32,14 @@
   // COLOR
   --color-accent: #0064fb;
   --color-default-logo: #ffffff;
+  --color-circle: #ffffff;
+  --color-link-default: #ffffff;
+  --color-button-default--static: #ffffff;
+  --color-button-default--hover: #ffffff;
+  --color-button-default-bg--static: #0064fb;
+  --color-button-default-bg--hover: #6aa6ff;
+  --color-slider-dot: #686868;
+  --color-slider-dot-active: #ffffff;
 
   // FONT
   --font-size: 16px;
@@ -41,7 +48,8 @@
   --font-medium: 500;
   --font-semi-bold: 600;
   --font-bold: 700;
-  --font-family: "Roboto", "Open Sanss", sans-serif;
+  --font-family: "Roboto", "Montserrat", sans-serif;
+  --font-montserrat: "Montserrat", "Roboto", sans-serif;
 }
 
 ul,
@@ -50,10 +58,26 @@ ol {
 }
 
 a {
+  color: var(--color-link-default);
   transition: color 0.2s ease-in-out;
   text-decoration: none;
   &:hover {
     color: var(--color-accent);
+  }
+}
+
+.button {
+  color: var(--color-button-default--static);
+  background-color: var(--color-button-default-bg--static);
+  padding: 15px 50px;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  transition: all 0.3s cubic-bezier(0.51, 0.92, 0.24, 1.15);
+  &:hover {
+    color: var(--color-button-default--hover);
+    background-color: var(--color-button-default-bg--hover);
   }
 }
 
@@ -85,12 +109,21 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  &:hover &__line {
+    transition: width 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    width: 20px;
+  }
   &__line {
+    transition: width 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     width: 20px;
     height: 2px;
     display: block;
     background-color: var(--color-circle);
     margin: 2px 0;
+    &:nth-child(2) {
+      width: 15px;
+    }
   }
 }
 
@@ -99,6 +132,7 @@ body {
   font-family: var(--font-family);
   background-color: var(--color-background);
   color: var(--color-text);
+  transition: all 0.3s ease-in-out;
 }
 
 // SECTIONS
@@ -155,6 +189,65 @@ body {
       display: flex;
     }
   }
+  &-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: var(--font-montserrat);
+    position: relative;
+    &__suptitle {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 20px;
+      margin-bottom: 20px;
+    }
+    &__title {
+      font-weight: 800;
+      font-size: 48px;
+      line-height: 59px;
+      margin-bottom: 90px;
+      max-width: 970px;
+    }
+    &-image {
+      padding: 262px 0px 95px 0px;
+      background-image: url("../assets/img/fernando-hernandez-8Facxtxqojc-unsplash.jpg");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      color: #ffffff;
+      height: 90vh;
+    }
+  }
 }
 
-//
+.slider {
+  &-dots {
+    position: absolute;
+    bottom: 95px;
+    left: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-50%);
+  }
+  &-dot {
+    display: block;
+    margin: 0px 15px;
+    width: 15px;
+    height: 15px;
+    background-color: var(--color-slider-dot);
+    border-radius: 50%;
+    transition: background-color 0.2s ease-in;
+    cursor: pointer;
+    &:hover {
+      background-color: var(--color-slider-dot-active);
+    }
+    &--active {
+      background-color: var(--color-slider-dot-active);
+    }
+  }
+}
